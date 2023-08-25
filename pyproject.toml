@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ca-todo"
+version = "0.1.0"
+description = ""
+authors = ["joao marcelo heusi\" <jmarcelo.heusi@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.3.0"
+fastapi = { extras = ["uvicorn"], version = "^0.101.1" }
+black = "^23.7.0"
+flake8 = "^6.1.0"
+mypy = "^1.5.1"
+uvicorn = "^0.23.2"
+injector = "^0.21.0"
+aiounittest = "^1.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
