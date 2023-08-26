@@ -1,9 +1,11 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from src.modules.todo.contracts.dtos.createTodo_dto import CreateTodoDto
+from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todo.entities.todo import Todo
-from src.modules.todo.services.createTodo.controller import CreateTodoController  # noqa
+from src.modules.todo.services.create_todo.controller import (
+    CreateTodoController,
+)
 
 todo_router = APIRouter(
     prefix="/todo",

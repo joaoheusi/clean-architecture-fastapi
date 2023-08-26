@@ -1,17 +1,15 @@
 from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todo.entities.todo import Todo
 from src.modules.todo.repositories.todo import TodoRepository
+from src.modules.todo.implementations.beanie.document import TodoDocument
 
 
-class FakeTodoRepository(TodoRepository):
-    __todos = []
-
+class BeanieTodoRepository(TodoRepository):
     async def create(self, data: CreateTodoDto) -> Todo:
-        todo = Todo(
-            id="1239874",
+        todo = TodoDocument(
             title=data.title,
             description=data.description,
             is_done=False,
         )
-        self.__todos.append(todo)
+        await todo.insert()
         return todo

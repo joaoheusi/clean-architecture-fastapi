@@ -1,11 +1,11 @@
 import asyncio
 import unittest
 
-from src.modules.todo.contracts.dtos.createTodo_dto import CreateTodoDto
+from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todo.implementations.fake.fake_todo_repository import (
     FakeTodoRepository,
 )
-from src.modules.todo.services.createTodo.service import CreateTodoService
+from src.modules.todo.services.create_todo.service import CreateTodoService
 
 
 class TestCreateTodoService(unittest.TestCase):

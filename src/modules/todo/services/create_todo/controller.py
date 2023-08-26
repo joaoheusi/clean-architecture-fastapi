@@ -1,8 +1,8 @@
 from fastapi.encoders import jsonable_encoder
 
-from src.modules.todo.contracts.dtos.createTodo_dto import CreateTodoDto
+from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todo.entities.todo import Todo
-from src.modules.todo.services.createTodo.service import CreateTodoService
+from src.modules.todo.services.create_todo.service import CreateTodoService
 from src.providers.container import container
 
 
