@@ -9,5 +9,12 @@ class CreateUserController:
     @staticmethod
     async def handle(data: CreateUserDto) -> User:
         create_user_service = container.get(CreateUserService)
-        response = await create_user_service.perform(data)
+        response = await create_user_service.execute(data)
         return jsonable_encoder(response)
+
+        # POSSIBLE TO REMOVE SOME OF THE ATTRIBUTES USING THE EXCLUDE PARAMETER
+        # create_user_service_result = await create_user_service.perform(data)
+        # response = jsonable_encoder(
+        #     create_user_service_result.model_dump(exclude={"password"})
+        # )
+        # return jsonable_encoder(response)

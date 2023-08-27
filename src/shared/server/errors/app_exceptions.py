@@ -29,3 +29,17 @@ class AppExceptions(HTTPException):
             status_code=400,
             detail=detail,
         )
+
+    @staticmethod
+    def invalid_user_password_combination() -> HTTPException:
+        detail = {
+            "errorCode": "INVALID_USER_PASSWORD_COMBINATION",
+            "errorMessages": {
+                "pt-BR": "Combinação de usuário e senha inválida",
+                "en-US": "Invalid user and password combination",
+            },
+        }
+        return HTTPException(
+            status_code=400,
+            detail=detail,
+        )

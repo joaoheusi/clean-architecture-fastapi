@@ -8,11 +8,13 @@ from src.modules.users.implementations.fake.fake_users_repository import (
     FakeUsersRepository,
 )
 from src.modules.users.services.create_user.service import CreateUserService
+from src.providers.hash.implementations.fake.fake_hash_provider import FakeHashProvider
 
 
 class TestCreateUserService(unittest.TestCase):
     users_repository = FakeUsersRepository()
-    create_user_service = CreateUserService(users_repository)
+    hash_provider = FakeHashProvider()
+    create_user_service = CreateUserService(users_repository, hash_provider)
 
     def test_correct(self) -> None:
         data = CreateUserDto(
@@ -22,7 +24,7 @@ class TestCreateUserService(unittest.TestCase):
             firstName="first_name",
             lastName="last_name",
         )
-        response = asyncio.run(self.create_user_service.perform(data))
+        response = asyncio.run(self.create_user_service.execute(data))
         assert response.email == data.email
         assert response.username == data.username
         assert response.firstName == data.firstName
@@ -37,5 +39,5 @@ class TestCreateUserService(unittest.TestCase):
             lastName="last_name",
         )
         with self.assertRaises(HTTPException) as context:
-            asyncio.run(self.create_user_service.perform(data))
+            asyncio.run(self.create_user_service.execute(data))
         assert context.exception.status_code == 400
