@@ -15,3 +15,17 @@ class AppExceptions(HTTPException):
             status_code=404,
             detail=detail,
         )
+
+    @staticmethod
+    def email_in_use() -> HTTPException:
+        detail = {
+            "errorCode": "EMAIL_ALREADY_IN_USE",
+            "errorMessages": {
+                "pt-BR": "Email já está em uso",
+                "en-US": "Email already in use",
+            },
+        }
+        return HTTPException(
+            status_code=400,
+            detail=detail,
+        )

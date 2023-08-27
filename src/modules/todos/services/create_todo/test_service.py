@@ -13,7 +13,7 @@ class TestCreateTodoService(unittest.TestCase):
     create_todo_service = CreateTodoService(fake_todo_repository)
     event_loop = asyncio.get_event_loop()
 
-    def test_correct(self):
+    def test_correct(self) -> None:
         data = CreateTodoDto(
             **{
                 "title": "title",
@@ -22,7 +22,7 @@ class TestCreateTodoService(unittest.TestCase):
             }
         )
         response = self.event_loop.run_until_complete(
-            self.create_todo_service.handle(data)
+            self.create_todo_service.perform(data)
         )
         assert response.title == data.title
         assert response.description == data.description
