@@ -2,7 +2,7 @@ from uuid import uuid4
 from pydantic import Field
 from beanie import Document
 
-from src.modules.todo.entities.todo import Todo
+from src.modules.todos.entities.todo import Todo
 
 
 class TodoDocument(Document, Todo):

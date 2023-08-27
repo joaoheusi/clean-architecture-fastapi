@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from src.modules.todo.implementations.beanie.document import TodoDocument
+from src.modules.todos.implementations.beanie.document import TodoDocument
 
 load_dotenv()
 

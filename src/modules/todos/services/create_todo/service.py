@@ -1,8 +1,8 @@
 from injector import inject
 
-from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
-from src.modules.todo.entities.todo import Todo
-from src.modules.todo.repositories.todo import TodoRepository
+from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
+from src.modules.todos.entities.todo import Todo
+from src.modules.todos.repositories.todo import TodoRepository
 
 
 class CreateTodoService:

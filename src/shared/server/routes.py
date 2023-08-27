@@ -1,6 +1,6 @@
 from fastapi.routing import APIRouter
 
-from src.modules.todo.routers.todo_router import todo_router
+from src.modules.todos.routers.todos_router import todos_router
 from src.providers.test_provider import config
 from src.shared.server.index import app
 
@@ -14,4 +14,4 @@ async def ping():
 
 
 app.include_router(router)
-app.include_router(todo_router)
+app.include_router(todos_router)

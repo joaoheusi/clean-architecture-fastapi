@@ -1,12 +1,12 @@
 from injector import Module, provider, singleton
-from src.modules.todo.implementations.beanie.beanie_todo_repository import (
+from src.modules.todos.implementations.beanie.beanie_todo_repository import (
     BeanieTodoRepository,
 )
 
-from src.modules.todo.implementations.fake.fake_todo_repository import (
+from src.modules.todos.implementations.fake.fake_todo_repository import (
     FakeTodoRepository,
 )
-from src.modules.todo.repositories.todo import TodoRepository
+from src.modules.todos.repositories.todo import TodoRepository
 
 
 class FakeTodoRepositoryModule(Module):

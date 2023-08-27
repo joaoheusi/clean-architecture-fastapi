@@ -1,7 +1,7 @@
-from src.modules.todo.contracts.dtos.create_todo import CreateTodoDto
-from src.modules.todo.entities.todo import Todo
-from src.modules.todo.repositories.todo import TodoRepository
-from src.modules.todo.implementations.beanie.document import TodoDocument
+from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
+from src.modules.todos.entities.todo import Todo
+from src.modules.todos.repositories.todo import TodoRepository
+from src.modules.todos.implementations.beanie.document import TodoDocument
 
 
 class BeanieTodoRepository(TodoRepository):
