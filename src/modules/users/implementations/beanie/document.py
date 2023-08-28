@@ -1,7 +1,9 @@
+from uuid import uuid4
+
 from beanie import Document
 from pydantic import Field
+
 from src.modules.users.entities.user import User
-from uuid import uuid4
 
 
 class UserDocument(Document, User):

@@ -3,9 +3,7 @@ from fastapi.responses import JSONResponse
 
 from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todos.entities.todo import Todo
-from src.modules.todos.services.create_todo.controller import (
-    CreateTodoController,
-)
+from src.modules.todos.services.create_todo.controller import CreateTodoController
 from src.modules.users.entities.user import User
 from src.providers.container import container
 from src.shared.contracts.enums.application_scope import ApplicationScope

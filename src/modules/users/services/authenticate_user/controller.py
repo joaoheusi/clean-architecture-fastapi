@@ -1,4 +1,5 @@
 from fastapi.encoders import jsonable_encoder
+
 from src.modules.users.contracts.dtos.authenticate_user import AuthenticateUserDto
 from src.modules.users.contracts.interfaces.user_auth import UserAuthInterface
 from src.modules.users.services.authenticate_user.service import AuthenticateUserService

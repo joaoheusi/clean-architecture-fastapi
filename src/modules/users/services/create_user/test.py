@@ -2,8 +2,8 @@ import asyncio
 import unittest
 
 from fastapi.exceptions import HTTPException
-from src.modules.users.contracts.dtos.create_user import CreateUserDto
 
+from src.modules.users.contracts.dtos.create_user import CreateUserDto
 from src.modules.users.implementations.fake.fake_users_repository import (
     FakeUsersRepository,
 )

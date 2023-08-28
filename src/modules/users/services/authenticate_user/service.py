@@ -1,7 +1,7 @@
 from injector import inject
+
 from src.modules.users.contracts.dtos.authenticate_user import AuthenticateUserDto
 from src.modules.users.contracts.interfaces.user_auth import UserAuthInterface
-
 from src.modules.users.contracts.repositories.users import UsersRepository
 from src.providers.hash.contracts.interfaces.hash import HashProvider
 from src.providers.token.contracts.dtos.create_token import CreateTokenDto

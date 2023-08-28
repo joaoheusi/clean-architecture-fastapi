@@ -1,5 +1,5 @@
-from src.modules.users.contracts.repositories.users import UsersRepository
 from src.modules.users.contracts.dtos.create_user import CreateUserDto
+from src.modules.users.contracts.repositories.users import UsersRepository
 from src.modules.users.entities.user import User
 from src.modules.users.implementations.beanie.document import UserDocument
 

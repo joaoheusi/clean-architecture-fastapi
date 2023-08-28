@@ -1,4 +1,5 @@
 from typing import Any
+
 from fastapi.routing import APIRouter
 
 from src.modules.todos.routers.todos_router import todos_router

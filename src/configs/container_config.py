@@ -1,9 +1,9 @@
 from injector import Module, provider, singleton
+
+from src.modules.todos.contracts.repositories.todo import TodoRepository
 from src.modules.todos.implementations.beanie.beanie_todo_repository import (
     BeanieTodoRepository,
 )
-
-from src.modules.todos.contracts.repositories.todo import TodoRepository
 from src.modules.users.contracts.repositories.users import UsersRepository
 from src.modules.users.implementations.beanie.beanie_users_repository import (
     BeanieUsersRepository,

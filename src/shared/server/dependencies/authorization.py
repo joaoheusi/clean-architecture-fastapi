@@ -1,5 +1,6 @@
 from fastapi import Request
 from injector import inject
+
 from src.modules.users.contracts.repositories.users import UsersRepository
 from src.modules.users.entities.user import User
 from src.providers.token.contracts.interfaces.token import TokenProvider

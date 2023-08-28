@@ -1,4 +1,5 @@
 from fastapi.encoders import jsonable_encoder
+
 from src.modules.users.contracts.dtos.create_user import CreateUserDto
 from src.modules.users.entities.user import User
 from src.modules.users.services.create_user.service import CreateUserService
