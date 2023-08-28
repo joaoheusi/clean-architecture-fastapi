@@ -18,8 +18,10 @@ todos_router = APIRouter(
 )
 
 todos_authorization = container.get(Authorization)
-todos_authorization.set_security_scope(SecurityScope.SINGLE.value)
-todos_authorization.set_application_scope(ApplicationScope.USER.value)
+todos_authorization.set_scopes(
+    security_scope=SecurityScope.SINGLE.value,
+    application_scope=ApplicationScope.USER.value,
+)
 
 
 @todos_router.post("", response_model=Todo)

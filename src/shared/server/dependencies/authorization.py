@@ -25,10 +25,8 @@ class Authorization:
         self.token_provider = token_provider
         self.users_repository = users_repository
 
-    def set_security_scope(self, security_scope: str) -> None:
+    def set_scopes(self, security_scope: str, application_scope: str) -> None:
         self.security_scope = security_scope
-
-    def set_application_scope(self, application_scope: str) -> None:
         self.application_scope = application_scope
 
     async def __call__(self, request: Request) -> User:
@@ -48,15 +46,10 @@ class Authorization:
         if not token_payload:
             raise AppExceptions.invalid_or_expired_token()
 
-        print(token_payload.securityScope.value)
-        print(self.security_scope)
-
-        if token_payload.securityScope.value != self.security_scope:
+        if token_payload.securityScope != self.security_scope:
             raise AppExceptions.insufficient_security_clearance()
 
         user = await self.users_repository.find_one_by_id(token_payload.owner)
-
-        print(user)
 
         if not user:
             raise AppExceptions.invalid_or_expired_token()

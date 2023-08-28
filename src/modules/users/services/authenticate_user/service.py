@@ -31,6 +31,7 @@ class AuthenticateUserService:
         password_match = await self.hash_provider.compare(data.password, user.password)
         if not password_match:
             raise AppExceptions.invalid_user_password_combination()
+
         token_payload = TokenPayload(
             type=TokenType.USER_AUTHENTICATION.value,
             owner=user.id,
