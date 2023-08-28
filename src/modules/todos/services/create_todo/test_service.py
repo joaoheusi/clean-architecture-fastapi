@@ -22,7 +22,7 @@ class TestCreateTodoService(unittest.TestCase):
             }
         )
         response = self.event_loop.run_until_complete(
-            self.create_todo_service.perform(data)
+            self.create_todo_service.execute(data)
         )
         assert response.title == data.title
         assert response.description == data.description

@@ -4,11 +4,17 @@ from src.providers.token.contracts.dtos.create_token import CreateTokenDto
 import json
 from src.providers.token.contracts.interfaces.token import TokenProvider
 from src.providers.token.contracts.interfaces.token_payload import TokenPayload
+from src.configs.redis_config import redis_config
 
 
 class RedisTokenProvider(TokenProvider):
     def __init__(self) -> None:
-        self.__redis = redis.Redis()
+        self.__redis = redis.Redis(
+            host=redis_config.host,
+            port=redis_config.port,
+            password=redis_config.password,
+            ssl=redis_config.ssl,
+        )
 
     async def create(self, data: CreateTokenDto) -> str:
         token = token_hex(64)

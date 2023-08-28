@@ -11,12 +11,18 @@ from src.modules.users.implementations.fake.fake_users_repository import (
 from src.modules.users.services.authenticate_user.service import AuthenticateUserService
 from src.modules.users.services.create_user.service import CreateUserService
 from src.providers.hash.implementations.fake.fake_hash_provider import FakeHashProvider
+from src.providers.token.implementations.fake.fake_token_provider import (
+    FakeTokenProvider,
+)
 
 
 class TestAuthenticateUserService(unittest.TestCase):
     users_repository = FakeUsersRepository()
     hash_provider = FakeHashProvider()
-    authenticate_user_service = AuthenticateUserService(users_repository, hash_provider)
+    token_provider = FakeTokenProvider()
+    authenticate_user_service = AuthenticateUserService(
+        users_repository, hash_provider, token_provider
+    )
     create_user_service = CreateUserService(users_repository, hash_provider)
 
     def test_authenticate(self) -> None:
@@ -34,8 +40,8 @@ class TestAuthenticateUserService(unittest.TestCase):
             email="email@emailauth.com",
             password="password",
         )
-        response = asyncio.run(self.authenticate_user_service.execute(auth_data))
-        assert response.email == auth_data.email
+        auth_response = asyncio.run(self.authenticate_user_service.execute(auth_data))
+        assert auth_response.user.email == auth_data.email
 
     def test_email_not_found(self) -> None:
         data = AuthenticateUserDto(
