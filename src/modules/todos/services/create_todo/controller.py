@@ -10,5 +10,7 @@ class CreateTodoController:
     @staticmethod
     async def handle(data: CreateTodoDto) -> Todo:
         create_todo_service = container.get(CreateTodoService)
-        response = await create_todo_service.handle(data)
-        return jsonable_encoder(response)
+        response = await create_todo_service.execute(data)
+        return jsonable_encoder(
+            response.model_dump(by_alias=False, exclude=["revision_id"])
+        )

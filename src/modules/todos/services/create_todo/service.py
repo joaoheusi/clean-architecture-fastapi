@@ -10,6 +10,6 @@ class CreateTodoService:
     def __init__(self, todo_repository: TodoRepository):
         self.todo_repository = todo_repository
 
-    async def perform(self, data: CreateTodoDto) -> Todo:
+    async def execute(self, data: CreateTodoDto) -> Todo:
         todo = await self.todo_repository.create(data)
         return todo

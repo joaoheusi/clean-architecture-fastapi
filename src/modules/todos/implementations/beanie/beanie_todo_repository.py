@@ -9,5 +9,5 @@ class BeanieTodoRepository(TodoRepository):
         todo = TodoDocument(
             **data.model_dump(),
         )
-        await todo.insert()
-        return todo
+        response = await todo.insert()
+        return response

@@ -5,7 +5,13 @@ from src.configs.container_config import (
     BeanieUsersRepositoryModule,
 )
 from src.providers.hash.index import BcryptHashProviderModule
+from src.providers.token.index import FakeTokenProviderModule
 
 container = Injector(
-    [BeanieTodoRepositoryModule, BeanieUsersRepositoryModule, BcryptHashProviderModule]
+    [
+        BeanieTodoRepositoryModule,
+        BeanieUsersRepositoryModule,
+        BcryptHashProviderModule,
+        FakeTokenProviderModule,
+    ]
 )

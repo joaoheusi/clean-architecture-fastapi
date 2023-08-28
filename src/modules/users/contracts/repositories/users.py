@@ -12,3 +12,7 @@ class UsersRepository(ABC):
     @abstractmethod
     async def find_one_by_email(self, email: str) -> User | None:
         raise Exception("Not implemented")
+
+    @abstractmethod
+    async def find_one_by_id(self, id: str) -> User | None:
+        raise Exception("Not implemented")

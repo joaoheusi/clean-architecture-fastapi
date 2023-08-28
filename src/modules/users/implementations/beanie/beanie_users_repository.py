@@ -13,3 +13,7 @@ class BeanieUsersRepository(UsersRepository):
     async def find_one_by_email(self, email: str) -> User | None:
         user = await UserDocument.find_one(UserDocument.email == email)
         return user
+
+    async def find_one_by_id(self, id: str) -> User | None:
+        user = await UserDocument.find_one(UserDocument.id == id)
+        return user

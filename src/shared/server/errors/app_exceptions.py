@@ -43,3 +43,73 @@ class AppExceptions(HTTPException):
             status_code=400,
             detail=detail,
         )
+
+    @staticmethod
+    def no_authentication_provided() -> HTTPException:
+        detail = {
+            "errorCode": "NO_AUTHENTICATION_PROVIDED",
+            "errorMessages": {
+                "pt-BR": "Nenhuma autenticação fornecida",
+                "en-US": "No authentication provided",
+            },
+        }
+        return HTTPException(
+            status_code=401,
+            detail=detail,
+        )
+
+    @staticmethod
+    def invalid_authentication_method() -> HTTPException:
+        detail = {
+            "errorCode": "INVALID_AUTHENTICATION_METHOD",
+            "errorMessages": {
+                "pt-BR": "Método de autenticação inválido",
+                "en-US": "Invalid authentication method",
+            },
+        }
+        return HTTPException(
+            status_code=401,
+            detail=detail,
+        )
+
+    @staticmethod
+    def invalid_or_expired_token() -> HTTPException:
+        detail = {
+            "errorCode": "INVALID_OR_EXPIRED_TOKEN",
+            "errorMessages": {
+                "pt-BR": "Token inválido ou expirado",
+                "en-US": "Invalid or expired token",
+            },
+        }
+        return HTTPException(
+            status_code=401,
+            detail=detail,
+        )
+
+    @staticmethod
+    def insufficient_security_clearance() -> HTTPException:
+        detail = {
+            "errorCode": "INSUFFICIENT_SECURITY_CLEARANCE",
+            "errorMessages": {
+                "pt-BR": "Autorização insuficiente",
+                "en-US": "Insufficient security clearance",
+            },
+        }
+        return HTTPException(
+            status_code=403,
+            detail=detail,
+        )
+
+    @staticmethod
+    def insufficient_application_clearance() -> HTTPException:
+        detail = {
+            "errorCode": "INSUFFICIENT_APPLICATION_CLEARANCE",
+            "errorMessages": {
+                "pt-BR": "Autorização insuficiente",
+                "en-US": "Insufficient application clearance",
+            },
+        }
+        return HTTPException(
+            status_code=403,
+            detail=detail,
+        )

@@ -18,3 +18,9 @@ class FakeUsersRepository(UsersRepository):
             if user.email == email:
                 return user
         return None
+
+    async def find_one_by_id(self, id: str) -> User | None:
+        for user in self.__users:
+            if user.id == id:
+                return user
+        return None
