@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ca-todo"
+name = "clean-architecture-fastapi"
 version = "0.1.0"
 description = ""
 authors = ["joao marcelo heusi\" <jmarcelo.heusi@gmail.com>"]
