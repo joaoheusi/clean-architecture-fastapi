@@ -4,7 +4,7 @@ from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todos.entities.todo import Todo
 
 
-class TodoRepository(ABC):
+class TodosRepository(ABC):
     @abstractmethod
     async def create(self, data: CreateTodoDto, user_id: str) -> Todo:
         raise Exception("Not implemented")

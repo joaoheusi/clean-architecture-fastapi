@@ -1,9 +1,9 @@
 from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
-from src.modules.todos.contracts.repositories.todo import TodoRepository
+from src.modules.todos.contracts.repositories.todos import TodosRepository
 from src.modules.todos.entities.todo import Todo
 
 
-class FakeTodoRepository(TodoRepository):
+class FakeTodosRepository(TodosRepository):
     __todos: list[Todo] = []
 
     async def create(self, data: CreateTodoDto, user_id: str) -> Todo:

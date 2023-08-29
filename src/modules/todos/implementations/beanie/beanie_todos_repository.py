@@ -1,10 +1,10 @@
 from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
-from src.modules.todos.contracts.repositories.todo import TodoRepository
+from src.modules.todos.contracts.repositories.todos import TodosRepository
 from src.modules.todos.entities.todo import Todo
 from src.modules.todos.implementations.beanie.document import TodoDocument
 
 
-class BeanieTodoRepository(TodoRepository):
+class BeanieTodosRepository(TodosRepository):
     async def create(self, data: CreateTodoDto, user_id: str) -> Todo:
         todo = TodoDocument(
             **data.model_dump(),

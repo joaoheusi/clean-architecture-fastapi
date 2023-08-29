@@ -4,8 +4,8 @@ import unittest
 from fastapi import HTTPException
 
 from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
-from src.modules.todos.implementations.fake.fake_todo_repository import (
-    FakeTodoRepository,
+from src.modules.todos.implementations.fake.fake_todos_repository import (
+    FakeTodosRepository,
 )
 from src.modules.todos.services.create_todo.service import CreateTodoService
 from src.modules.todos.services.find_user_todos.service import FindUserTodosService
@@ -13,7 +13,7 @@ from src.modules.todos.services.mark_todo_as_done.service import MarkTodoAsDoneS
 
 
 class TestTodosServices(unittest.TestCase):
-    fake_todo_repository = FakeTodoRepository()
+    fake_todo_repository = FakeTodosRepository()
     create_todo_service = CreateTodoService(fake_todo_repository)
     find_user_todos_service = FindUserTodosService(fake_todo_repository)
     mark_todo_as_done_service = MarkTodoAsDoneService(fake_todo_repository)
