@@ -6,5 +6,17 @@ from src.modules.todos.entities.todo import Todo
 
 class TodoRepository(ABC):
     @abstractmethod
-    async def create(self, data: CreateTodoDto) -> Todo:
+    async def create(self, data: CreateTodoDto, user_id: str) -> Todo:
+        raise Exception("Not implemented")
+
+    @abstractmethod
+    async def find_by_user_id(self, user_id: str) -> list[Todo]:
+        raise Exception("Not implemented")
+
+    @abstractmethod
+    async def find_by_id(self, todo_id: str) -> Todo | None:
+        raise Exception("Not implemented")
+
+    @abstractmethod
+    async def delete(self, todo_id: str) -> None:
         raise Exception("Not implemented")

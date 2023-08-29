@@ -26,7 +26,9 @@ class Authorization:
         self.token_provider = token_provider
         self.users_repository = users_repository
 
-    def set_scopes(self, security_scope: str, application_scope: str) -> None:
+    def set_scopes(
+        self, security_scope: SecurityScope, application_scope: ApplicationScope
+    ) -> None:
         self.security_scope = security_scope
         self.application_scope = application_scope
 

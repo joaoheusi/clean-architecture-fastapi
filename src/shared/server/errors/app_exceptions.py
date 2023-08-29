@@ -113,3 +113,17 @@ class AppExceptions(HTTPException):
             status_code=403,
             detail=detail,
         )
+
+    @staticmethod
+    def resource_not_yours() -> HTTPException:
+        detail = {
+            "errorCode": "RESOURCE_NOT_YOURS",
+            "errorMessages": {
+                "pt-BR": "Recurso não é seu",
+                "en-US": "Resource not yours",
+            },
+        }
+        return HTTPException(
+            status_code=403,
+            detail=detail,
+        )

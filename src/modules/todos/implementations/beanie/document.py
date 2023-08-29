@@ -11,3 +11,4 @@ class TodoDocument(Document, Todo):
 
     class Settings:
         name = "todos"
+        use_state_management = True
