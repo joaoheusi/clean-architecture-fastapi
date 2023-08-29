@@ -16,14 +16,40 @@ from src.providers.token.implementations.fake.fake_token_provider import (
 )
 
 
-class TestAuthenticateUserService(unittest.TestCase):
+class TestCreateUserService(unittest.TestCase):
     users_repository = FakeUsersRepository()
     hash_provider = FakeHashProvider()
+    create_user_service = CreateUserService(users_repository, hash_provider)
     token_provider = FakeTokenProvider()
     authenticate_user_service = AuthenticateUserService(
         users_repository, hash_provider, token_provider
     )
-    create_user_service = CreateUserService(users_repository, hash_provider)
+
+    def test_correct(self) -> None:
+        data = CreateUserDto(
+            email="email@email.com",
+            username="username",
+            password="password",
+            firstName="first_name",
+            lastName="last_name",
+        )
+        response = asyncio.run(self.create_user_service.execute(data))
+        assert response.email == data.email
+        assert response.username == data.username
+        assert response.firstName == data.firstName
+        assert response.lastName == data.lastName
+
+    def test_email_in_use(self) -> None:
+        data = CreateUserDto(
+            email="email@email.com",
+            username="username",
+            password="password",
+            firstName="first_name",
+            lastName="last_name",
+        )
+        with self.assertRaises(HTTPException) as context:
+            asyncio.run(self.create_user_service.execute(data))
+        assert context.exception.status_code == 400
 
     def test_authenticate(self) -> None:
         create_data = CreateUserDto(
