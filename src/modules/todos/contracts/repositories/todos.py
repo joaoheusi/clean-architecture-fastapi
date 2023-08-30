@@ -20,3 +20,7 @@ class TodosRepository(ABC):
     @abstractmethod
     async def delete(self, todo_id: str) -> None:
         raise Exception("Not implemented")
+
+    @abstractmethod
+    async def save(self, todo: Todo) -> None:
+        raise Exception("Not implemented")

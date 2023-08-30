@@ -10,6 +10,9 @@ from src.modules.todos.implementations.fake.fake_todos_repository import (
 from src.modules.todos.services.create_todo.service import CreateTodoService
 from src.modules.todos.services.find_user_todos.service import FindUserTodosService
 from src.modules.todos.services.mark_todo_as_done.service import MarkTodoAsDoneService
+from src.modules.todos.services.mark_todo_as_undone.service import (
+    MarkTodoAsUndoneService,
+)
 
 
 class TestTodosServices(unittest.TestCase):
@@ -17,6 +20,7 @@ class TestTodosServices(unittest.TestCase):
     create_todo_service = CreateTodoService(fake_todo_repository)
     find_user_todos_service = FindUserTodosService(fake_todo_repository)
     mark_todo_as_done_service = MarkTodoAsDoneService(fake_todo_repository)
+    mark_todo_as_undone_service = MarkTodoAsUndoneService(fake_todo_repository)
 
     def test_create_todo(self) -> None:
         data = CreateTodoDto(
@@ -46,7 +50,7 @@ class TestTodosServices(unittest.TestCase):
         )
         assert done_response.isDone is True
 
-    def test_mark_todo_as_other_user(self) -> None:
+    def test_mark_todo_as_done_with_other_user(self) -> None:
         wrong_user_id = "122222"
         original_user_id = "123456"
         response = asyncio.run(
@@ -60,3 +64,16 @@ class TestTodosServices(unittest.TestCase):
                 )
             )
         assert context.exception.status_code == 403
+
+    def test_mark_todo_as_undone(self) -> None:
+        user_id = "123456"
+        response = asyncio.run(self.find_user_todos_service.execute(user_id=user_id))
+        todo_id = response[0].id
+        done_response = asyncio.run(
+            self.mark_todo_as_done_service.execute(user_id=user_id, todo_id=todo_id)
+        )
+        assert done_response.isDone is True
+        undone_response = asyncio.run(
+            self.mark_todo_as_undone_service.execute(user_id=user_id, todo_id=todo_id)
+        )
+        assert undone_response.isDone is False

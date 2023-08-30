@@ -10,6 +10,9 @@ from src.modules.todos.services.find_user_todos.controller import (
 from src.modules.todos.services.mark_todo_as_done.controller import (
     MarkTodoAsDoneController,
 )
+from src.modules.todos.services.mark_todo_as_undone.controller import (
+    MarkTodoAsUndoneController,
+)
 from src.modules.users.entities.user import User
 from src.providers.container import container
 from src.shared.contracts.enums.application_scope import ApplicationScope
@@ -47,4 +50,12 @@ async def mark_todo_as_done(
     todo_id: str, user: User = Depends(todos_authorization)
 ) -> JSONResponse:
     response = await MarkTodoAsDoneController.handle(todo_id=todo_id, user_id=user.id)
+    return JSONResponse(response)
+
+
+@todos_router.patch("/{todo_id}/undone", response_model=Todo)
+async def mark_todo_as_undone(
+    todo_id: str, user: User = Depends(todos_authorization)
+) -> JSONResponse:
+    response = await MarkTodoAsUndoneController.handle(todo_id=todo_id, user_id=user.id)
     return JSONResponse(response)

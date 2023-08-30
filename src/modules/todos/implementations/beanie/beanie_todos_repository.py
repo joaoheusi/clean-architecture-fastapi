@@ -2,6 +2,9 @@ from src.modules.todos.contracts.dtos.create_todo import CreateTodoDto
 from src.modules.todos.contracts.repositories.todos import TodosRepository
 from src.modules.todos.entities.todo import Todo
 from src.modules.todos.implementations.beanie.document import TodoDocument
+from src.shared.utils.update_beanie_document_from_pydantic import (
+    update_beanie_document_from_pydantic,
+)
 
 
 class BeanieTodosRepository(TodosRepository):
@@ -23,15 +26,20 @@ class BeanieTodosRepository(TodosRepository):
         return todos
 
     async def find_by_id(self, todo_id: str) -> Todo | None:
-        todo = await TodoDocument.find_one(TodoDocument.id == todo_id)
+        todo = await TodoDocument.find_one(TodoDocument.id == todo_id).project(Todo)
         if not todo:
             return None
         return todo
 
     async def delete(self, todo_id: str) -> None:
-        todo = await self.find_by_id(todo_id)
+        todo = await TodoDocument.find_one(TodoDocument.id == todo_id)
         if not todo:
             return None
-        if not type(todo) == TodoDocument:
-            return None
         await todo.delete()
+
+    async def save(self, todo: Todo) -> None:
+        document = await TodoDocument.find_one(TodoDocument.id == todo.id)
+        if not document:
+            return None
+        await update_beanie_document_from_pydantic(document, todo)
+        await document.save_changes()

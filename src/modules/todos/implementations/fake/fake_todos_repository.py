@@ -26,3 +26,9 @@ class FakeTodosRepository(TodosRepository):
         if todo:
             self.__todos.remove(todo)
         return None
+
+    async def save(self, todo: Todo) -> None:
+        old_todo = await self.find_by_id(todo.id)
+        if old_todo:
+            old_todo = todo
+        return None
