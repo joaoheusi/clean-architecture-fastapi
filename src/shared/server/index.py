@@ -4,6 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from src.configs.beanie_config import DOCUMENT_MODELS, MONGODB_URL
 from src.providers.test_provider import config
+from src.shared.server.routes import router
 
 app = FastAPI()
 
@@ -21,3 +22,6 @@ async def start_test() -> None:
 async def start_beanie() -> None:
     database = AsyncIOMotorClient(MONGODB_URL).catodo
     await init_beanie(database=database, document_models=DOCUMENT_MODELS)
+
+
+app.include_router(router)
