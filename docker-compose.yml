@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dockerfile.app
+    restart: always
+    links:
+      - redis
+    ports:
+      - 8000:80
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
+networks:
+  traefik-public:
+    external: false
