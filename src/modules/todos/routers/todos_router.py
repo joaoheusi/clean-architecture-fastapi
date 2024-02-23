@@ -17,7 +17,7 @@ from src.modules.users.entities.user import User
 from src.providers.container import container
 from src.shared.contracts.enums.application_scope import ApplicationScope
 from src.shared.contracts.enums.security_scope import SecurityScope
-from src.shared.server.dependencies.authorization import Authorization
+from src.shared.dependencies.authorization import Authorization
 
 todos_router = APIRouter(
     prefix="/todos",

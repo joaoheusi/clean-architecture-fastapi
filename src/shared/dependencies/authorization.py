@@ -6,7 +6,7 @@ from src.modules.users.entities.user import User
 from src.providers.token.contracts.interfaces.token import TokenProvider
 from src.shared.contracts.enums.application_scope import ApplicationScope
 from src.shared.contracts.enums.security_scope import SecurityScope
-from src.shared.server.errors.app_exceptions import AppExceptions
+from src.shared.errors.app_exceptions import AppExceptions
 from src.shared.utils.get_authorization_scheme_param import (
     get_authorization_scheme_param,
 )

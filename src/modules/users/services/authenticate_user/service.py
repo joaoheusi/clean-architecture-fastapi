@@ -9,7 +9,7 @@ from src.providers.token.contracts.enums.token_type import TokenType
 from src.providers.token.contracts.interfaces.token import TokenProvider
 from src.providers.token.contracts.interfaces.token_payload import TokenPayload
 from src.shared.contracts.enums.security_scope import SecurityScope
-from src.shared.server.errors.app_exceptions import AppExceptions
+from src.shared.errors.app_exceptions import AppExceptions
 
 
 class AuthenticateUserService:

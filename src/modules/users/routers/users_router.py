@@ -13,7 +13,7 @@ from src.modules.users.services.create_user.controller import CreateUserControll
 from src.providers.container import container
 from src.shared.contracts.enums.application_scope import ApplicationScope
 from src.shared.contracts.enums.security_scope import SecurityScope
-from src.shared.server.dependencies.authorization import Authorization
+from src.shared.dependencies.authorization import Authorization
 
 users_router = APIRouter(
     prefix="/users",

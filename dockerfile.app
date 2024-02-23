@@ -24,4 +24,4 @@ RUN poetry config virtualenvs.create false \
 
 COPY . .
 # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-CMD ["uvicorn", "src.shared.server.index:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.server.index:app", "--host", "0.0.0.0", "--port", "80"]

@@ -4,7 +4,7 @@ from src.modules.users.contracts.dtos.create_user import CreateUserDto
 from src.modules.users.contracts.repositories.users import UsersRepository
 from src.modules.users.entities.user import User
 from src.providers.hash.contracts.interfaces.hash import HashProvider
-from src.shared.server.errors.app_exceptions import AppExceptions
+from src.shared.errors.app_exceptions import AppExceptions
 
 
 class CreateUserService:

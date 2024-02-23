@@ -2,7 +2,7 @@ from injector import inject
 
 from src.modules.todos.contracts.repositories.todos import TodosRepository
 from src.modules.todos.entities.todo import Todo
-from src.shared.server.errors.app_exceptions import AppExceptions
+from src.shared.errors.app_exceptions import AppExceptions
 
 
 class MarkTodoAsDoneService:

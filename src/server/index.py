@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from src.configs.beanie_config import DOCUMENT_MODELS, MONGODB_URL
 from src.providers.test_provider import config
-from src.shared.server.routes import router
+from src.server.routes import router
 
 app = FastAPI()
 
