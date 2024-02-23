@@ -1,7 +1,7 @@
 ## To run use the following commands:
 
 ```
-uvicorn src.shared.server.index:app --reload --host 0.0.0.0 --port 8000
+uvicorn src.server.index:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ## To run tests use:
